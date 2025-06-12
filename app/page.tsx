@@ -1,4 +1,4 @@
-import HexCompare from '../components/hex-compare';
+import HexCompare from '@/components/HexCompare';
 
 export default function Page() {
   return <HexCompare />;
