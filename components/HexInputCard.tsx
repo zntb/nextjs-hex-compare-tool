@@ -14,17 +14,20 @@ interface HexInputCardProps {
   title: string;
   value: string;
   onChange: (value: string) => void;
+  'data-testid'?: string;
 }
 
 export default function HexInputCard({
   title,
   value,
   onChange,
+  'data-testid': dataTestId,
+  ...props
 }: HexInputCardProps) {
   const handleCopy = () => navigator.clipboard.writeText(value);
 
   return (
-    <Card>
+    <Card {...props}>
       <CardHeader>
         <CardTitle className='flex items-center gap-2'>
           <FileText className='w-5 h-5' />
@@ -34,6 +37,7 @@ export default function HexInputCard({
       </CardHeader>
       <CardContent>
         <Textarea
+          data-testid={dataTestId}
           value={value}
           onChange={e => onChange(e.target.value)}
           className='min-h-[200px] font-mono text-sm'
